@@ -1,68 +1,69 @@
 let tasks = [];
 
-// Adicionar uma nova tarefa
+// Add a new task
 function addTask(description, priority) {
-    const id = tasks.length + 1; // Gera ID único
+    const id = tasks.length + 1; // Auto-generate a unique ID
     tasks.push({ id, description, priority });
-    console.log(`Tarefa Adicionada: ${description} (${priority})`);
+    console.log(`Task Added: ${description} (${priority})`);
 }
 
-// Exibir todas as tarefas
+// Display all tasksss
 function displayTasks() {
     console.clear();
-    console.log("Lista de Tarefas:");
+    console.log("To-Do List:");
     tasks.forEach(task => {
-        console.log(`ID: ${task.id}, Descrição: ${task.description}, Prioridade: ${task.priority}`);
+        console.log(`ID: ${task.id}, Description: ${task.description}, Priority: ${task.priority}`);
     });
 }
 
-// Deletar uma tarefa pelo ID
+
+// Delete a task by ID
 function deleteTask(id) {
     tasks = tasks.filter(task => task.id !== id);
-    console.log(`Tarefa com ID ${id} deletada.`);
+    console.log(`Task with ID ${id} deleted.`);
 }
 
-// Filtrar tarefas por prioridade
+// Filter tasks by priority
 function filterByPriority(priority) {
-    console.log(`Tarefas com prioridade: ${priority}`);
+    console.log(`Tasks with priority: ${priority}`);
     tasks.filter(task => task.priority === priority).forEach(task => {
-        console.log(`ID: ${task.id}, Descrição: ${task.description}`);
+        console.log(`ID: ${task.id}, Description: ${task.description}`);
     });
 }
 
-// Menu Interativo
+// Interactive Menu
 function interactiveMenu() {
     let option;
     do {
-        option = prompt(`Escolha uma opção:
-        1. Adicionar Tarefa
-        2. Visualizar Todas as Tarefas
-        3. Deletar Tarefa
-        4. Filtrar por Prioridade
-        5. Sair`);
+        option = prompt(`Choose an option:
+        1. Add Task
+        2. View All Tasks
+        3. Delete Task
+        4. Filter by Priority
+        5. Exit`);
 
         switch (option) {
             case '1':
-                const description = prompt("Digite a descrição da tarefa:");
-                const priority = prompt("Digite a prioridade da tarefa (high, medium, low):");
+                const description = prompt("Enter task description:");
+                const priority = prompt("Enter task priority (high, medium, low):");
                 addTask(description, priority);
                 break;
             case '2':
                 displayTasks();
                 break;
             case '3':
-                const idToDelete = parseInt(prompt("Digite o ID da tarefa a ser deletada:"));
+                const idToDelete = parseInt(prompt("Enter Task ID to delete:"));
                 deleteTask(idToDelete);
                 break;
             case '4':
-                const priorityToFilter = prompt("Digite a prioridade para filtrar (high, medium, low):");
+                const priorityToFilter = prompt("Enter priority to filter (high, medium, low):");
                 filterByPriority(priorityToFilter);
                 break;
             case '5':
-                alert("Encerrando o aplicativo.");
+                alert("Exiting application.");
                 break;
             default:
-                alert("Opção inválida!");
+                alert("Invalid option!");
         }
     } while (option !== '5');
 }
